@@ -289,6 +289,27 @@
         display: none; /* Hide iframe, buttons, network diagram and extra P in top right section */
     }
 
+    /* Mathe-App Stile (aus EINBINDEN.html) */
+    .math-task {
+      background: #111;
+      padding: 1em;
+      border: 1px solid #00ffff;
+      margin-top: 1em;
+    }
+    .math-task input {
+      padding: 5px;
+      margin-right: 5px;
+    }
+    .math-task button {
+      background-color: #00ffff;
+      border: none;
+      color: #000;
+      cursor: pointer;
+      padding: 6px 12px;
+    }
+    .math-task p {
+      margin-top: 10px;
+    }
 
   </style>
 </head>
@@ -444,7 +465,16 @@
       <p><button class="button" onclick="window.open('https://zaha175.github.io/MATHEJACOBAPP/', '_blank')">CUBSUPER <i class="fas fa-external-link-alt"></i></button></p>
     <iframe src="https://zaha175.github.io/MATHEJACOBAPP/" ></iframe>
     <p>
-    </div>
+   <!-- *** Hier die Mathe-App eingefügt (aus EINBINDEN.html) *** -->
+      <h2>Westworld Mathe-App</h2>
+      <div class="math-task">
+        <p>Berechne: <strong>15 + 27</strong></p>
+        <input type="number" id="answer" />
+        <button onclick="checkAnswer()">Prüfen</button>
+        <p id="feedback"></p>
+      </div>
+     <p>
+ </div>
 
     <div class="section control-panel" id="control">
       <h2>Bearbeiten und Steuern</h2>
@@ -482,7 +512,8 @@
         </button>
         <iframe src="https://zaha175.github.io/FARBENTEST2/" title="Cub 3"></iframe>
       </form>
-     <p>
+
+     
   </div>
  </div>
 
@@ -600,7 +631,7 @@
 
     function animate() {
       requestAnimationFrame(animate);
-      // hostSphere.rotation.y += 0.01; // Wird einen Fehler ausgeben, da hostSphere möglicherweise undefiniert ist
+      // hostSphere.rotation.y += 0.01; // Wird einen Fehler
       // renderer.render(scene, camera); // Wird einen Fehler ausgeben, da renderer/scene/camera möglicherweise undefiniert sind
       hostSphere_section2.rotation.y += 0.01;
       renderer_section2.render(scene_section2, camera_section2);
@@ -628,6 +659,17 @@
         });
       });
     });
+
+    // Mathe-Aufgabe prüfen (aus EINBINDEN.html)
+    function checkAnswer() {
+      const userAnswer = document.getElementById('answer').value;
+      const feedback = document.getElementById('feedback');
+      if (parseInt(userAnswer) === 42) {
+        feedback.innerHTML = '✅ Korrekt!';
+      } else {
+        feedback.innerHTML = '❌ Versuche es noch einmal!';
+      }
+    }
   </script>
 </body>
 </html>
